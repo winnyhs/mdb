@@ -30,9 +30,9 @@ def build_hash_key(table_rows, str_len):
     index = {}
     for row in table_rows:
         key = (
-            norm(row.get("대분류"), str_len),
-            norm(row.get("소분류1"), str_len),
-            norm(row.get("설명"), str_len)
+            norm(row.get("TYPE"), str_len),
+            norm(row.get("ITEM"), str_len),
+            norm(row.get("MEMO"), str_len)
         )
         index.setdefault(key, []).append(row)
 
@@ -47,17 +47,17 @@ def load_json(json_path):
         return json.load(f)
 
 # Exact match json item with table hash: (O(1) lookup
-def exact_match(item, hash_key):
+def exact_match(item, hash_key, prefix_len):
     key = (
-        norm(item.get("cat")),
-        norm(item.get("subcat")),
-        norm(item.get("description"))
+        norm(item.get("cat"), prefix_len),
+        norm(item.get("subcat"), prefix_len),
+        norm(item.get("description"), prefix_len)
     )
     return hash_key.get(key)   # 없으면 []
 
 
 # Insert new row into M_HISTORY
-def insert_into_m_history(db, a_row, prog_name) :
+def insert_into_m_history(db, table_row, timestamp, prog_name) :
     """
     M_HISTORY schema:
     HTIME (datetime)
@@ -72,17 +72,17 @@ def insert_into_m_history(db, a_row, prog_name) :
     rs = db.OpenRecordset("M_HISTORY")
 
     rs.AddNew()
-    rs.Fields("HTIME").Value = datetime.datetime.now()
+    rs.Fields("HTIME").Value = timestamp
     rs.Fields("DESP").Value = prog_name   # 처방 이름
-    rs.Fields("CODE").Value = a_row.get("코드")
-    rs.Fields("NAME").Value = a_row.get("설명")
+    rs.Fields("CODE").Value = table_row.get("CODE")
+    rs.Fields("NAME").Value = table_row.get("MEMO")
 
     # numeric → Decimal
-    rs.Fields("DATA1").Value = Decimal(str(a_row.get("주파수") or 0))
-    rs.Fields("DATA2").Value = Decimal(str(a_row.get("시간") or 0))
+    rs.Fields("DATA1").Value = Decimal(str(table_row.get("DATA1") or 0))
+    rs.Fields("DATA2").Value = Decimal(str(table_row.get("DATA2") or 0))
 
-    rs.Fields("GRP").Value = a_row.get("처방")
-    rs.Fields("VIDEO").Value = ""   # 빈 문자열
+    rs.Fields("GRP").Value = table_row.get("GRP")
+    rs.Fields("VIDEO").Value = table_row.get("VIDEO")
 
     rs.Update()
     rs.Close()
@@ -91,6 +91,7 @@ def insert_into_m_history(db, a_row, prog_name) :
 def process_prescription(mdb_path, password, json_fname, prog_name, verbose = True):
     prefix_len = 24
     table_name = "M_DATA"
+    timestamp = datetime.datetime.now().replace(microsecond=0, second=0)
 
     # 1) DAO open
     if verbose: 
@@ -126,7 +127,7 @@ def process_prescription(mdb_path, password, json_fname, prog_name, verbose = Tr
         json_norm_desc = norm(item.get("description") or "", prefix_len)
 
         # exact match: 여러 row 가능
-        matched_rows = exact_match(item, hash_key)
+        matched_rows = exact_match(item, hash_key, prefix_len)
         if not matched_rows:
             skipped_list.append([item, json_norm_desc])
             skipped_json_items += 1
@@ -136,18 +137,18 @@ def process_prescription(mdb_path, password, json_fname, prog_name, verbose = Tr
         # 매칭된 row 전부 M_HISTORY에 insert
         print(f"--- Insert {len(matched_rows)} row(s) for {item}")
 
-        for a_row in matched_rows:
-            # insert_into_m_history(db, a_row, prog_name)
+        for table_row in matched_rows:
+            insert_into_m_history(db, table_row, timestamp, prog_name)
             total_added_rows += 1
 
             added_list.append({
-                "code": a_row.get("코드"),
-                "name": a_row.get("설명"),
-                "cat": a_row.get("대분류"), 
-                "subcat": a_row.get("소분류1"), 
-                "grp": a_row.get("처방"),
+                "code": table_row.get("코드"),
+                "name": table_row.get("설명"),
+                "cat": table_row.get("대분류"), 
+                "subcat": table_row.get("소분류1"), 
+                "grp": table_row.get("처방"),
                 "desc_json": item.get("description"),
-                "desc_a": a_row.get("설명"),
+                "desc_a": table_row.get("설명"),
             })
 
     db.Close()
@@ -159,6 +160,10 @@ def process_prescription(mdb_path, password, json_fname, prog_name, verbose = Tr
     print("──────────────────────────────")
 
     return total_added_rows, added_list, skipped_json_items, skipped_list
+
+
+
+
 
 # 실행
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 import os, sys, json
+
 from lib.dao_utils import detect_mdb_version
 from lib.mdb_reader import mdb_to_json_files
 from lib.mdb_writer import json_to_mdb
@@ -8,6 +9,26 @@ from lib.mdb_insert import process_prescription
 from lib.sql_utils import get_dao_engine, all_table_row_counts
 
 
+def inspect_table(mdb_path, password, table="M_HISTORY"):
+    engine = get_dao_engine()
+    connect = f";PWD={password}"
+    db = engine.OpenDatabase(mdb_path, False, False, connect)
+
+    tbl = db.TableDefs(table)
+    print("=== Fields ===")
+    for f in tbl.Fields:
+        print(f"Name={f.Name}, Type={f.Type}, Size={f.Size}, Attr={f.Attributes}")
+
+    print("\n=== Indexes ===")
+    for idx in tbl.Indexes:
+        print(f"Index={idx.Name}, Primary={idx.Primary}, Unique={idx.Unique}")
+        for f in idx.Fields:
+            print("   Field:", f.Name)
+
+    db.Close()
+
+
+
 if __name__ == "__main__":
 
     mdb_path = r"E:\App\Data\VSCode\mdb\db\MEDICAL.mdb"
@@ -15,8 +36,8 @@ if __name__ == "__main__":
     in_dir = r"E:\App\Data\VSCode\mdb\output"
     out_dir = r"E:\App\Data\VSCode\mdb\temp"
 
-    print("한글이 깨진다???")
     print(f"{mdb_path} version: {detect_mdb_version(mdb_path, password)}")
+    inspect_table(mdb_path, password, "M_HISTORY")
 
     cmd = sys.argv[1]
     if cmd == 'read': 
@@ -35,7 +56,7 @@ if __name__ == "__main__":
     elif cmd == "insert": 
         json_file = os.path.join(in_dir, r"must-have.json")
         add_cnt, add_list, drop_cnt, drop_list = \
-            process_prescription(mdb_path, password, json_file, "ttt", True)
+            process_prescription(mdb_path, password, json_file, "test-same-mm", True)
     
     # elif cmd == 'update': # ??? Won't be used. Never mind
     #     # 예: "M_DATA" 테이블의 "description", "prescription" 필드만 업데이트
