@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+if [ -n "$_OLD_VIRTUAL_PS1" ]; then
+    export PS1=$_OLD_VIRTUAL_PS1
+    unset _OLD_VIRTUAL_PS1
+fi
+
+if [ -n _OLD_VIRTUAL_PYTHONHOME ]; then
+    export PYTHONHOME=$_OLD_VIRTUAL_PYTHONHOME
+    unset _OLD_VIRTUAL_PYTHONHOME
+fi
+
+if [ -n _OLD_VIRTUAL_PATH ]; then
+    export PATH=$_OLD_VIRTUAL_PATH
+    unset _OLD_VIRTUAL_PATH
+fi
+
+unset VIRTUAL_ENV
+
+echo "Python Environment:"
+echo "    VIRTUAL_ENV: $VIRTUAL_ENV"
+#echo "    PS1: $PS1"
+echo "    PYTHONHOME: $PYTHONHOME"
+echo "    PATH: $PATH"

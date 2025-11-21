@@ -1,0 +1,41 @@
+[
+  {
+    "percentage": 45,
+    "test_id": 1,
+    "test_run_id": 3,
+    "test_case": "A",
+    "cat": "오관",
+    "subcat": "코",
+    "description": "정맥동염(부비강염)(공동과 폐 감염은 파라인플루엔자 RSV(아데노바이러스)와 같은 바이러스(인플루엔자 A)를 포함하여 다량의 병원체에 기인할 수 있습니다 ",
+    "code": "A0877015",
+    "prescription": "Sinusitis",
+    "part": "",
+    "fname": null
+  },
+  {
+    "percentage": 78,
+    "test_id": 1,
+    "test_run_id": 7,
+    "test_case": "A",
+    "cat": "운동",
+    "subcat": "멀미",
+    "description": "멀미, 동요병(또한 구역질을 봅니다)",
+    "code": "A0648013",
+    "prescription": "Motion_sickness",
+    "part": "",
+    "fname": null
+  },
+  {
+    "percentage": 77,
+    "test_id": 1,
+    "test_run_id": 9,
+    "test_case": "A",
+    "cat": "생식",
+    "subcat": "남성",
+    "description": "고환염(TB, 볼거리, 임질, 암, 세균, 등 때문에 고환의 염증 만일 알고 있으면 또한 원인이 되는 상태를 보아 주세요)",
+    "code": "A0694017",
+    "prescription": "Orchitis",
+    "part": "",
+    "fname": null
+  }
+]
