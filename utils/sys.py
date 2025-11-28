@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import ctypes
+import ctypes, os
 
 from lib.log import logger
 
@@ -50,6 +50,23 @@ def kill_processes_startswith(prefix):
             logger.error(f"ERROR: -----------------------------------------------------------------")
             return False
 
+
+# ------------------------
+# path type
+# ------------------------
+def path_type(path):
+    is_abs = os.path.isabs(path)    # 절대경로인지?
+    dirname = os.path.dirname(path) # 디렉토리 부분 추출
+    base = os.path.basename(path)   # basename (파일명만인지 여부)
+
+    if is_abs:
+        return "absolute"
+    else:
+        # absolute가 아닌 경우: relative or file name only
+        if dirname == "":
+            return "file_name_only"
+        else:
+            return "relative"
 
 
 # ------------------------
@@ -124,6 +141,20 @@ def choose_external_drive_name(): # The earliest detected one
 # 사용 예
 # -----------------------
 if __name__ == "__main__":
+
+    # -----
     labels = list_removable_drive_labels()
     for drive, label in labels.items():
         print("%s: %s" % (drive, label)) # E: SONY
+
+    # -----
+    paths = [
+        r"C:\temp\data.txt",
+        r"E:data.txt",
+        r"temp\data.txt",
+        r"data.txt",
+        r".\data.txt",
+        r"..\config\set.ini"
+    ]
+    for p in paths:
+        print(p, "→", classify_path(p))

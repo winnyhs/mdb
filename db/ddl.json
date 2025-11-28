@@ -1,0 +1,669 @@
+{
+  "a": {
+    "fields": [
+      {
+        "name": "코드",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "주파수",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "시간",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "처방",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "그래픽",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "설명",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "대분류",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "소분류1",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "소분류2",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "F10",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "F11",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      }
+    ],
+    "indexes": []
+  },
+  "b": {
+    "fields": [
+      {
+        "name": "코드",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "주파수",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "시간",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "처방",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "그래픽",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "설명",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "대분류",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "소분류1",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "소분류2",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      }
+    ],
+    "indexes": []
+  },
+  "c": {
+    "fields": [
+      {
+        "name": "코드",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "주파수",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "시간",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "처방",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "그래픽",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "설명",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "대분류",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "소분류1",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "소분류2",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      }
+    ],
+    "indexes": []
+  },
+  "GRP": {
+    "fields": [
+      {
+        "name": "GRPCODE",
+        "type": 10,
+        "size": 100,
+        "attributes": 2
+      },
+      {
+        "name": "X",
+        "type": 4,
+        "size": 4,
+        "attributes": 1
+      },
+      {
+        "name": "Y",
+        "type": 4,
+        "size": 4,
+        "attributes": 1
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PrimaryKey",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "GRPCODE"
+        ]
+      }
+    ]
+  },
+  "M_DATA": {
+    "fields": [
+      {
+        "name": "CODE",
+        "type": 10,
+        "size": 12,
+        "attributes": 2
+      },
+      {
+        "name": "TYPE",
+        "type": 10,
+        "size": 30,
+        "attributes": 2
+      },
+      {
+        "name": "ITEM",
+        "type": 10,
+        "size": 40,
+        "attributes": 2
+      },
+      {
+        "name": "DETAIL",
+        "type": 10,
+        "size": 20,
+        "attributes": 2
+      },
+      {
+        "name": "NAME",
+        "type": 10,
+        "size": 200,
+        "attributes": 2
+      },
+      {
+        "name": "DATA1",
+        "type": 5,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "DATA2",
+        "type": 5,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "GRP",
+        "type": 10,
+        "size": 50,
+        "attributes": 2
+      },
+      {
+        "name": "VOICE",
+        "type": 10,
+        "size": 30,
+        "attributes": 2
+      },
+      {
+        "name": "VIDEO",
+        "type": 10,
+        "size": 30,
+        "attributes": 2
+      },
+      {
+        "name": "MEMO",
+        "type": 10,
+        "size": 250,
+        "attributes": 2
+      },
+      {
+        "name": "WDATE",
+        "type": 8,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "MDATE",
+        "type": 8,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "WRITER",
+        "type": 10,
+        "size": 12,
+        "attributes": 2
+      },
+      {
+        "name": "MODIFYER",
+        "type": 10,
+        "size": 12,
+        "attributes": 2
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PrimaryKey",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "CODE"
+        ]
+      }
+    ]
+  },
+  "M_HISTORY": {
+    "fields": [
+      {
+        "name": "HTIME",
+        "type": 8,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "DESP",
+        "type": 10,
+        "size": 100,
+        "attributes": 2
+      },
+      {
+        "name": "CODE",
+        "type": 10,
+        "size": 20,
+        "attributes": 2
+      },
+      {
+        "name": "NAME",
+        "type": 10,
+        "size": 200,
+        "attributes": 2
+      },
+      {
+        "name": "DATA1",
+        "type": 5,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "DATA2",
+        "type": 5,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "GRP",
+        "type": 10,
+        "size": 50,
+        "attributes": 2
+      },
+      {
+        "name": "VIDEO",
+        "type": 10,
+        "size": 50,
+        "attributes": 2
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PrimaryKey",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "HTIME",
+          "DESP",
+          "CODE"
+        ]
+      }
+    ]
+  },
+  "M_INI": {
+    "fields": [
+      {
+        "name": "ITEM",
+        "type": 10,
+        "size": 12,
+        "attributes": 2
+      },
+      {
+        "name": "VALUE",
+        "type": 10,
+        "size": 50,
+        "attributes": 2
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PrimaryKey",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "ITEM"
+        ]
+      }
+    ]
+  },
+  "M_LIST": {
+    "fields": [
+      {
+        "name": "HOST",
+        "type": 10,
+        "size": 30,
+        "attributes": 2
+      },
+      {
+        "name": "CODE",
+        "type": 10,
+        "size": 30,
+        "attributes": 2
+      },
+      {
+        "name": "NAME",
+        "type": 10,
+        "size": 200,
+        "attributes": 2
+      },
+      {
+        "name": "DATA1",
+        "type": 5,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "DATA2",
+        "type": 5,
+        "size": 8,
+        "attributes": 1
+      },
+      {
+        "name": "GRP",
+        "type": 10,
+        "size": 100,
+        "attributes": 2
+      },
+      {
+        "name": "VIDEO",
+        "type": 10,
+        "size": 100,
+        "attributes": 2
+      },
+      {
+        "name": "ID",
+        "type": 4,
+        "size": 4,
+        "attributes": 17
+      }
+    ],
+    "indexes": [
+      {
+        "name": "LIST_KEY",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "ID"
+        ]
+      }
+    ]
+  },
+  "M_QA": {
+    "fields": [
+      {
+        "name": "ID",
+        "type": 4,
+        "size": 4,
+        "attributes": 17
+      },
+      {
+        "name": "QUSTION",
+        "type": 10,
+        "size": 255,
+        "attributes": 2
+      },
+      {
+        "name": "VALUE",
+        "type": 7,
+        "size": 8,
+        "attributes": 1
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PrimaryKey",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "ID"
+        ]
+      }
+    ]
+  },
+  "M_TABLE": {
+    "fields": [
+      {
+        "name": "TBL",
+        "type": 10,
+        "size": 10,
+        "attributes": 2
+      },
+      {
+        "name": "FLD",
+        "type": 10,
+        "size": 10,
+        "attributes": 2
+      },
+      {
+        "name": "NAME",
+        "type": 10,
+        "size": 10,
+        "attributes": 2
+      },
+      {
+        "name": "WIDTH",
+        "type": 10,
+        "size": 10,
+        "attributes": 2
+      },
+      {
+        "name": "SERNO",
+        "type": 10,
+        "size": 10,
+        "attributes": 2
+      }
+    ],
+    "indexes": []
+  },
+  "M_USER": {
+    "fields": [
+      {
+        "name": "USERID",
+        "type": 10,
+        "size": 12,
+        "attributes": 2
+      },
+      {
+        "name": "PSWD",
+        "type": 10,
+        "size": 12,
+        "attributes": 2
+      },
+      {
+        "name": "CMD0",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD1",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD2",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD3",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD4",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD5",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD6",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD7",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD8",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD9",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD10",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD11",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMD12",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMDa",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      },
+      {
+        "name": "CMDb",
+        "type": 10,
+        "size": 1,
+        "attributes": 2
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PrimaryKey",
+        "primary": true,
+        "unique": true,
+        "required": true,
+        "fields": [
+          "USERID"
+        ]
+      }
+    ]
+  }
+}
